@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GroupGallery>
+<div class="section-heading">
+    <h2>Gallery</h2>
+    <div class="line-dec"></div>
+    <span>Donec sit amet enim tempor nisl fermentum aliquam. In consectetur sapien eu nisi venenatis lobortis. Sed ullamcorper tristique elit nec facilisis.</span>
+</div>
+<div class="row">
+    <div class="isotope-wrapper">
+        <form class="isotope-toolbar">
+            @{
+                var num = 0;
+                foreach (var item in Model)
+                {
+                    if (num == 0)
+                    {
+                        <label>
+                            <input type="radio" data-type="@item.Name" checked="" name="isotope-filter" />
+                            <span>@item.Name</span>
+                        </label>
+                        num++;
+                        continue;
+                    }
+                    <label>
+                        <input type="radio" data-type="@item.Name" name="isotope-filter" />
+                        <span>@item.Name</span>
+                    </label>
+
+                }
+
+
+
+            }
+
+
+
+        </form>
+       
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="column" data-type="@item.Name">
+                        
+                            @foreach (var i in item.Gallery)
+                            {
+
+                                <img src="~/images/@i.ImagePath" alt="woman at the beach" />
+                                <figcaption>
+                                    <a href="~/images/@i.ImagePath"
+                                       data-lightbox="image-@(i.id)"
+                                       data-title="Caption"><i class="fa fa-search"></i></a>
+                                    <h4>Girl One</h4>
+                                    <span>woman at the beach</span>
+                                </figcaption>
+                            }
+                        
+                    </div>
+                }
+
+            </div>
+        
+    </div>
+</div>

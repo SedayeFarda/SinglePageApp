@@ -1,0 +1,107 @@
+﻿#GroupGalleryData_id{
+
+
+    margin-top:10px;
+}
+#btn_create_id{
+
+    margin-top:68px;
+}
+
+.image_style {
+    width:200px;
+    height:200px;
+
+}
+#div_description {
+    
+    
+    height: 175px;
+    overflow: hidden;
+    
+   }
+
+.box {
+    width: 40%;
+    word-wrap: break-word;
+    width: auto;
+    text-align: right;
+    padding:30px;
+}
+   
+    .box #div_description img {
+        display: none;
+    }
+    .box #btn_description {
+        display: inline-block;
+        color: slateblue;
+        background-color:lightskyblue;
+        border-radius: 8px;
+        margin-top:20px;
+    }
+
+#img_description{
+    width:284px;
+    height:284px;
+    border-radius:8px;
+
+}
+.showContent #div_description  {
+    height: auto;
+}
+.control-label {
+    float: right;
+}
+.div_image{
+    float:right;
+}
+.btn_Style {
+    float: right;
+}
+
+.box_text_discreption_admin p{
+   width:878px;
+    height:79px;
+    overflow:hidden;
+
+}
+.box_text_discreption_admin img{
+
+    width:65px!important;
+    height:65px!important;
+}
+
+.lbl_tab{
+
+    float:right;
+}
+
+.row {
+    display: flex;
+ 
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.row .column{
+
+    flex:33.3%;
+    width:auto;
+    overflow:hidden;
+    padding:0 10px;
+    height:100%;
+}
+
+.column {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}

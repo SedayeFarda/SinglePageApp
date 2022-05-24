@@ -1,0 +1,54 @@
+﻿@model IEnumerable<logo>
+
+@{ 
+    if (ViewBag.num == 1)
+    {
+    <div class="card text-center text-danger">
+        <div class="card-header" style="font-size:60px">
+            خطا
+        </div>
+        <div class="card-body">
+            <p class="card-text" style="font-size:30px">شما نمیتوانید بیشتر از یک رکورد داشته باشید</p>
+            <a href="@Url.Action("index")" class="btn btn-primary">رفتن به صفحه قبل</a>
+        </div>
+
+    </div>
+    }
+
+
+    else
+    {
+
+
+<table class="table">
+    <tr>
+        <th>
+            نام لوگو
+        </th>
+        <th>
+           آدرس تصویر
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var i in Model)
+    {
+        <tr id="item@(i.id)">
+            <td>
+                @Html.DisplayFor(modelItem => i.FullName)
+            </td>
+            <td>
+                <img src="~/images/logo/@i.ImagePath" class="thumbnail" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = i.id }) |
+                @Html.ActionLink("Details", "Details", new { id = i.id }) |
+               
+            </td>
+        </tr>
+    }
+
+</table>
+
+        }
+    }

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SinglePageApp.Description>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+   <a class="btn btn-success" href="@Url.Action("Create")">Create</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+  
+    <td>
+        <div class="box_text_discreption_admin">
+            @Html.Raw(item.Text)
+        </div>
+    </td>
+    <td>
+        <a class="btn btn-warning" href="@Url.Action("Edit",new {id=item.ID })">Edit</a> |
+        <a class="btn btn-danger" href="@Url.Action("Delete",new {id=item.ID })">Delete</a> |
+
+
+    </td>
+</tr>
+}
+
+</table>
