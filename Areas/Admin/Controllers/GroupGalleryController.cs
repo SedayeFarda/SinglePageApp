@@ -11,10 +11,8 @@ namespace SinglePageApp.Areas.Admin.Controllers
         GroupGalleryRepository repository = new GroupGalleryRepository();
         // GET: Admin/GroupGallery
         public ActionResult Index()
-        {
-            
-            return View();
-            
+        {           
+            return View();           
         }
 
         public ActionResult DataGroupGallery()
