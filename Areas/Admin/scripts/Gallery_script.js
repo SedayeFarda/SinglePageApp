@@ -4,7 +4,8 @@
 
 $("#FormCreateGallery").submit(function (event) {
     event.preventDefault();
-    if ($(this).valid()) {
+    if ($(this).valid())
+    {
 
 
         $.ajax({

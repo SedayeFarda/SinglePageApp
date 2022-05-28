@@ -1,18 +1,10 @@
-﻿
-
-@{
-    ViewBag.Title = "Index";
-}
-
-
-<h2>Index</h2>
-<div id="div_form">
-    @Html.Action("Create", "logo")
+﻿<div id="div_form">
+    @Html.Action("_Create", "logo")
 </div>
 
 
 <div id="div_list">
-    @Html.Action("List", "logo")
+    @Html.Action("_List", "logo")
 </div>
 
 
@@ -26,7 +18,7 @@
 
 
 
-    <script src="~/Areas/Admin/scripts/Logo_script.js"></script>
+<script src="~/Areas/Admin/scripts/Logo_script.js"></script>
 
 
 

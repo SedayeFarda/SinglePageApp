@@ -1,11 +1,9 @@
-﻿
-
-$("#FormCreateLogo").submit(function (model) {
-    model.preventDefault();
+﻿$("#FormCreateLogo").submit(function (event) {
+    event.preventDefault();
     if ($(this).valid()) {
-        $.ajax({
+        
             $.ajax({
-                url: "/Admin/logo/Create",
+                url: "/Admin/logo/_Create",
                 type: "Post",
                 data: new FormData(this),
                 contentType: false,
@@ -15,7 +13,7 @@ $("#FormCreateLogo").submit(function (model) {
                 $("#div_list").html(res);
 
             });
-        }
+    }
     else {
                 return false;
             }
@@ -30,6 +28,28 @@ function ShowImagePreview(imageUploader, previewImage) {
     }
 }
 
+$(document).on("click", "#edit", function () {
+
+
+
+  $.ajax({
+        url: "/admin/logo/Edit" + id,
+        type: "Get",
+
+
+
+    }).done(function (res) {
+
+        $("#div_form").html(res);
+
+
+
+    });
+
+
+
+}) 
+  
 function deletee(id) {
 
     $.ajax({

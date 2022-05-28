@@ -153,6 +153,10 @@
     <Compile Include="Migrations\202203282108129_db.designer.cs">
       <DependentUpon>202203282108129_db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205281529118_db1.cs" />
+    <Compile Include="Migrations\202205281529118_db1.designer.cs">
+      <DependentUpon>202205281529118_db1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ContactRepository.cs" />
@@ -1404,10 +1408,10 @@
     <Content Include="bootstrap-tagsinput-latest\README.md" />
     <Content Include="Areas\Admin\Views\Home\Edit.cshtml" />
     <Content Include="Content\js\jquery-3.6.0.min.map" />
-    <Content Include="Areas\Admin\Views\logo\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\logo\_Create.cshtml" />
     <Content Include="Areas\Admin\Views\logo\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\logo\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\logo\List.cshtml" />
+    <Content Include="Areas\Admin\Views\logo\_List.cshtml" />
     <Content Include="Scripts\bootstrap-rtl.js" />
     <Content Include="Scripts\bootstrap-rtl.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1459,6 +1463,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202203282108129_db.resx">
       <DependentUpon>202203282108129_db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205281529118_db1.resx">
+      <DependentUpon>202205281529118_db1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

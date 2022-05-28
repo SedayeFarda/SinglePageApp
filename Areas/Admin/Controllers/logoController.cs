@@ -23,18 +23,18 @@ namespace SinglePageApp.Areas.Admin.Controllers
            
             return View();
         }
-        public ActionResult List()
+        public ActionResult _List()
         {
-            return View(logoRepository.GetAllLogo());
+            return PartialView(logoRepository.GetAllLogo());
 
         }
         // GET: Admin/logo/Details/5
        
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult _Create()
         {
-            return View();
+            return PartialView();
         }
 
         public logo logo_1()
@@ -48,15 +48,15 @@ namespace SinglePageApp.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,FullName,ImagePath")] logo logo,HttpPostedFileBase File)
+        public ActionResult _Create([Bind(Include = "id,FullName,ImagePath")] logo logo,HttpPostedFileBase File)
         {
-        
-          
 
-                if(logoRepository.CountLogo()==1)
+           
+
+            if (logoRepository.CountLogo()==1)
                 {
                     ViewBag.num = 1;
-                    return View("List",logoRepository.GetAllLogo());
+                    return PartialView("_List",logoRepository.GetAllLogo());
                     
                 }
               if(File!=null)
@@ -73,12 +73,12 @@ namespace SinglePageApp.Areas.Admin.Controllers
                 else
                 {
                     ModelState.AddModelError("", "لطفا عکس را آپلود کنید");
-                    return View("List",logoRepository.GetAllLogo());
+                    return PartialView("_List",logoRepository.GetAllLogo());
                 }
                 logoRepository.insert(logo);
             
            
-            return View("List",logoRepository.GetAllLogo());
+            return PartialView("_List",logoRepository.GetAllLogo());
 
         }
         [HttpGet]
@@ -91,7 +91,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(logo);
+            return View("Create",logo);
         }
 
         // POST: Admin/logo/Edit/5

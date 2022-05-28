@@ -41,7 +41,7 @@
                 <img src="~/images/logo/@i.ImagePath" class="thumbnail" />
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = i.id }) |
+                <a class="btn btn-warning" onclick="edite(@i.id)" id="edit">Edite</a>
                 @Html.ActionLink("Details", "Details", new { id = i.id }) |
                
             </td>

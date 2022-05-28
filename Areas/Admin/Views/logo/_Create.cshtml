@@ -1,6 +1,6 @@
 ﻿@model logo
     
-        @using (Html.BeginForm("Create", "logo", FormMethod.Post, new { id = "FormCreateLogo", enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("_Create", "logo", FormMethod.Post, new { id = "FormCreateLogo", enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 

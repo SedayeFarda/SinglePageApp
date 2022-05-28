@@ -31,7 +31,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Gallery gallery)           
         {
-            ViewBag.GroupGallery_id = new SelectList(GroupGalleryRepository.GetAllList(),"id","Name");
+            //ViewBag.GroupGallery_id = new SelectList(GroupGalleryRepository.GetAllList(),"id","Name");
             
                
                     gallery.ImagePath = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(gallery.UploadFile.FileName);
