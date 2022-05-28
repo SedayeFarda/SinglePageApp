@@ -50,9 +50,6 @@ namespace SinglePageApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult _Create([Bind(Include = "id,FullName,ImagePath")] logo logo,HttpPostedFileBase File)
         {
-
-           
-
             if (logoRepository.CountLogo()==1)
                 {
                     ViewBag.num = 1;
