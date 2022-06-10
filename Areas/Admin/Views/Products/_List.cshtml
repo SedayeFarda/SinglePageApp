@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SinglePageApp.Product>
+
+@if (ViewBag.up == false)
+{
+<div class="alert alert-danger show">مشکلی پیش آمده</div>
+
+}
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Discryption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Linq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discryption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Linq)
+            </td>
+            <td>
+                <img src="~/images/product/@item.ImgName" />
+            </td>
+            <td>
+                <a class="btn btn-warning btn-sm" onclick="edite(@item.Id)">ویرایش</a>
+                <a class="btn btn-danger btn-sm" onclick="del(@item.Id)">حذف</a>
+
+            </td>
+        </tr>
+    }
+
+</table>

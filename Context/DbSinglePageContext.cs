@@ -15,5 +15,7 @@ namespace SinglePageApp
         public DbSet<Contact> Contact { get; set; }
         public DbSet<logo> logo { get; set; }
         public DbSet<Slider> Slider { get; set; }
+
+        public DbSet<Product> Product { get; set; }
     }
     }

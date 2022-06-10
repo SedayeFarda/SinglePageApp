@@ -35,7 +35,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
             
                
                     gallery.ImagePath = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(gallery.UploadFile.FileName);
-                    gallery.UploadFile.SaveAs(Server.MapPath("~/images/") + gallery.ImagePath);
+                    gallery.UploadFile.SaveAs(Server.MapPath("/images/gallery") + gallery.ImagePath);
                     repository.insert(gallery);
                     return PartialView("_DataGallery", repository.GetAllList());
      

@@ -64,6 +64,20 @@
                 .PrimaryKey(t => t.id);
             
             CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Price = c.Int(nullable: false),
+                        Title = c.String(nullable: false),
+                        Discryption = c.String(nullable: false),
+                        Tags = c.String(nullable: false),
+                        Linq = c.String(nullable: false),
+                        ImgName = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Sliders",
                 c => new
                     {
@@ -79,6 +93,7 @@
             DropForeignKey("dbo.Galleries", "GroupGallery_id", "dbo.GroupGalleries");
             DropIndex("dbo.Galleries", new[] { "GroupGallery_id" });
             DropTable("dbo.Sliders");
+            DropTable("dbo.Products");
             DropTable("dbo.logoes");
             DropTable("dbo.GroupGalleries");
             DropTable("dbo.Galleries");

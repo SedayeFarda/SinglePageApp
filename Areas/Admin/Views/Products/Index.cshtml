@@ -1,0 +1,23 @@
+﻿@{
+
+
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div id="add_data">
+    @Html.Action("Create", "Products")
+</div>
+<div id="list_data">
+    @Html.Action("_List")
+</div>
+
+
+@section Script{
+    <script src="~/Areas/Admin/scripts/Product_script.js"></script>
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $("#Discryption").ckeditor();
+    </script>
+}
+

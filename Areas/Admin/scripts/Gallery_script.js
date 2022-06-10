@@ -41,7 +41,7 @@ $("#FormCreateGallery").submit(function (event) {
                 contentType: false,
                 processData: false,
                 success: function (res) {
-                    alert(2);
+                   
                     $("#Gallery").html(res);
 
                 }
