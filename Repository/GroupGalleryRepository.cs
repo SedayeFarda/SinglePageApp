@@ -9,7 +9,11 @@ namespace SinglePageApp
 {
     public class GroupGalleryRepository : IGroupGallery
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext db;
+        public GroupGalleryRepository(DbSinglePageContext _db)
+        {
+            db = _db;
+        }
         public void delete(int id)
         {
             var GroupGallery = GetById(id);
@@ -19,26 +23,26 @@ namespace SinglePageApp
 
         public void Dispose()
         {
-            Dispose();
+            db.Dispose();
         }
 
         public List<GroupGallery> GetAllList()
         {
-            return db.GroupGallery.ToList();
+            return db.GroupGallerys.ToList();
         }
 
         public GroupGallery GetById(int id)
         {
-            return db.GroupGallery.Find(id);
+            return db.GroupGallerys.Find(id);
         }
 
         public void insert(GroupGallery GroupGallery)
         {
-            db.GroupGallery.Add(GroupGallery);
+            db.GroupGallerys.Add(GroupGallery);
             save();
         }
 
-    
+
 
         public void save()
         {
@@ -51,6 +55,6 @@ namespace SinglePageApp
             save();
         }
 
-       
+
     }
 }

@@ -9,7 +9,7 @@ namespace SinglePageApp
     public class GroupGallery
     {
         [Key]
-        public int id { get; set; }
+        public int GroupGalleryId { get; set; }
         [Display(Name ="نام گروه")]
         [Required(ErrorMessage ="لطفا {0} را وارد کنید")]
         [MaxLength(length: 50)]

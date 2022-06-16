@@ -13,7 +13,7 @@ namespace SinglePageApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202206051907113_db"; }
+            get { return "202206161051486_db"; }
         }
         
         string IMigrationMetadata.Source

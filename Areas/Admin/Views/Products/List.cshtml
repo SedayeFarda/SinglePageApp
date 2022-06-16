@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<SinglePageApp.Product>
 
-@if (ViewBag.up == false)
-{
-<div class="alert alert-danger show">مشکلی پیش آمده</div>
-
+@{ 
+     Layout = null;
 }
-<table class="table">
+<table class="table table-bordered table-striped" dir="rtl">
     <tr>
 
         <th>
@@ -50,8 +48,8 @@
                 <img src="~/images/product/@item.ImgName" />
             </td>
             <td>
-                <a class="btn btn-warning btn-sm" onclick="edite(@item.Id)">ویرایش</a>
-                <a class="btn btn-danger btn-sm" onclick="del(@item.Id)">حذف</a>
+                <a class="btn btn-warning btn-sm" onclick="edite(@item.ProductId)">ویرایش</a>
+                <a class="btn btn-danger btn-sm" onclick="del(@item.ProductId)">حذف</a>
 
             </td>
         </tr>

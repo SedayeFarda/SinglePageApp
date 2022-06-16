@@ -10,7 +10,11 @@ namespace SinglePageApp.Repository
 {
     public class ProductRepository : IProduct
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext db;
+        public ProductRepository(DbSinglePageContext _db)
+        {
+            db = _db;
+        }
         public bool delete(int id)
         {
             try
@@ -30,31 +34,31 @@ namespace SinglePageApp.Repository
 
         public void Dispose()
         {
-            Dispose();
+            db.Dispose();
         }
 
         public Product GetById(int id)
         {
-           Product product= db.Product.Find(id);
+            Product product = db.Products.Find(id);
             return product;
         }
 
         public void insert(Product product)
         {
-            db.Product.Add(product);
+            db.Products.Add(product);
             save();
         }
 
         public List<Product> ListProduct()
         {
-            return db.Product.ToList();
+            return db.Products.ToList();
         }
 
         public void save()
         {
             try
             {
-              
+
                 db.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -67,21 +71,29 @@ namespace SinglePageApp.Repository
                     }
                 }
             }
-           
+
         }
 
-        public bool update(Product product)
+        public bool update(Product _product)
         {
-            try
-            {
-                db.Entry(product).State = EntityState.Modified;
-                save();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            var product = db.Products.Find(_product.ProductId);
+            product.Discryption = _product.Discryption;
+            product.ImgName = _product.ImgName;
+            product.Linq = _product.Linq;
+            product.Price = _product.Price;
+            product.Tags = _product.Tags;
+            product.Title = _product.Title;
+           
+            save();
+            return true;
+
+
+       
+            
+
+
+
+
         }
     }
 }

@@ -13,7 +13,7 @@ function ShowImagePreview(imageUploader, previewImage)
     }
 }
 function edite_post() {
-    alert(2224)
+    
     var data1 = $("#FormEditProduct");
     console.log(data1.valid());
     if ($(data1).valid()) {
@@ -36,8 +36,8 @@ function edite_post() {
 
 }
 
-$("#FormEditProduct").submit(function (event) {
-    alert(2);
+$(document).on("submit","#FormEditProduct",function (event) {
+    alert(2525);
     event.preventDefault();
     if ($(this).valid()) {
 
@@ -60,7 +60,7 @@ $("#FormEditProduct").submit(function (event) {
 });
 
 
-$("#FormCreateProduct").submit(function (event) {
+$(document).on("submit", "#FormCreateProduct",function (event) {
     event.preventDefault();
     if ($(this).valid()) {
         $.ajax({
@@ -92,6 +92,7 @@ $("#FormCreateProduct").submit(function (event) {
 
 
 function edite(id) {
+    alert(2);
     $.ajax({
         url: "/admin/products/Edit/" + id,
         type: "Get",

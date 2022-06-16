@@ -415,6 +415,6 @@ E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.Co
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csproj.CopyComplete
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.dll
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.pdb
+E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csprojAssemblyReference.cache
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.Migrations.db.resources
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csproj.GenerateResource.cache
-E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csprojAssemblyReference.cache

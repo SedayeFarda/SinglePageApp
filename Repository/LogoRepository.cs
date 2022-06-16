@@ -13,29 +13,29 @@ namespace SinglePageApp
 
         public int CountLogo()
         {
-            return db.logo.Count();
+            return db.logos.Count();
         }
 
         public void Dispose()
         {
-            Dispose();
+            db.Dispose();
         }
 
         public logo GetById(int id)
         {
-            return db.logo.Find(id);
+            return db.logos.Find(id);
         }
 
         public void insert(logo logo)
         {
-            db.logo.Add(logo);
+            db.logos.Add(logo);
             Save();
         }
 
         public List<logo> GetAllLogo()
         {
-            return db.logo.ToList();
-            
+            return db.logos.ToList();
+
         }
 
         public void Save()
@@ -45,7 +45,7 @@ namespace SinglePageApp
 
         public void Update(logo logo)
         {
-            db.Entry(logo).State=EntityState.Modified;
+            db.Entry(logo).State = EntityState.Modified;
             Save();
         }
     }

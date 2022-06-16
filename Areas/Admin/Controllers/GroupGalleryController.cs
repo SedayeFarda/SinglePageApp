@@ -8,16 +8,21 @@ namespace SinglePageApp.Areas.Admin.Controllers
 {
     public class GroupGalleryController : Controller
     {
-        GroupGalleryRepository repository = new GroupGalleryRepository();
+        DbSinglePageContext db = new DbSinglePageContext();
+        GroupGalleryRepository GroupGallery_repository;
+        public GroupGalleryController()
+        {
+            GroupGallery_repository = new GroupGalleryRepository(db);
+        }
         // GET: Admin/GroupGallery
         public ActionResult Index()
-        {           
-            return View();           
+        {
+            return View();
         }
 
         public ActionResult DataGroupGallery()
         {
-            return PartialView("_DataGroupGallery", repository.GetAllList());
+            return PartialView("_DataGroupGallery", GroupGallery_repository.GetAllList());
 
         }
         [HttpGet]
@@ -30,10 +35,10 @@ namespace SinglePageApp.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(GroupGallery groupGallery)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                repository.insert(groupGallery);
-                return PartialView("_DataGroupGallery", repository.GetAllList());
+                GroupGallery_repository.insert(groupGallery);
+                return PartialView("_DataGroupGallery", GroupGallery_repository.GetAllList());
 
             }
             return View("_Create", groupGallery);
@@ -41,18 +46,18 @@ namespace SinglePageApp.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var GroupGallery = repository.GetById(id);
+            var GroupGallery = GroupGallery_repository.GetById(id);
             return PartialView("_Edit", GroupGallery);
         }
         [HttpPost]
         public ActionResult Edit(GroupGallery groupGallery)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                repository.update(groupGallery);
-                return PartialView("_DataGroupGallery", repository.GetAllList());
+                GroupGallery_repository.update(groupGallery);
+                return PartialView("_DataGroupGallery", GroupGallery_repository.GetAllList());
             }
-            return PartialView("_Edit",groupGallery);
+            return PartialView("_Edit", groupGallery);
 
         }
     }

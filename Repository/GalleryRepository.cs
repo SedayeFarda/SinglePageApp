@@ -9,7 +9,11 @@ namespace SinglePageApp.Repository
 {
     public class GalleryRepository : IGallery
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext db;
+        public GalleryRepository(DbSinglePageContext _db)
+        {
+            db = _db;
+        }
         public void delete(int id)
         {
             var gallery = GetById(id);
@@ -19,17 +23,17 @@ namespace SinglePageApp.Repository
 
         public List<Gallery> GetAllList()
         {
-            return db.Gallery.ToList();
+            return db.Gallerys.ToList();
         }
 
         public Gallery GetById(int id)
         {
-            return db.Gallery.Find(id);
+            return db.Gallerys.Find(id);
         }
 
         public void insert(Gallery gallery)
         {
-            db.Gallery.Add(gallery);
+            db.Gallerys.Add(gallery);
             save();
         }
 

@@ -10,8 +10,9 @@ namespace SinglePageApp
 {
     public class Product
     {
+        
         [Key]
-        public int Id { get; set; }
+        public int ProductId { get; set; }
          [Display(Name = "قیمت")]
           [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
         public int Price { get; set; }
@@ -31,12 +32,15 @@ namespace SinglePageApp
         [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
         public string Linq { get; set; }
         [Display(Name = "عکس")]
-        [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
+      [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
 
         public string ImgName { get; set; }
         [NotMapped]
         [Display(Name = "فایل")]
         [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
         public HttpPostedFileBase UploadFile { get; set; }
+
+        public virtual ICollection<ProductGroup> ProductGroup { get; set; }
+       
     }
 }

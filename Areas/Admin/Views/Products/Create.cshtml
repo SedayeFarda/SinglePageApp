@@ -1,10 +1,13 @@
 ﻿@model SinglePageApp.Product
 
-
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { id = "FormCreateProduct", enctype = "multipart/form-data" }))
+@{ 
+     Layout = null;
+}
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new {dir="rtl", id = "FormCreateProduct", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(x => x.ImgName)
+    @Html.HiddenFor(x => x.ProductId)
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
@@ -50,16 +53,54 @@
         </div>
 
         <div class="form-group">
-            <img src="" id="ImgNameAdd" width="200" height="200" />
+            <img src="@Url.Content("/images/product/" + @Model.ImgName)" id="ImgNameAdd" width="200" height="200" />
             <div class="col-md-10">
                 <input type="file" name="UploadFile" onchange="ShowImagePreview(this,document.getElementById('ImgNameAdd'))" />
                 @Html.ValidationMessageFor(model => model.ImgName, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
 
+            <div class="col-md-10">
+                @{
+
+
+                    
+                    IEnumerable<Group> Groups = ViewBag.Groups;
+                    <ul>
+                        @foreach (var item in Groups.Where(x => x.Parent_id == null))
+                        {
+
+                            <li>
+                                <input type="checkbox"  name="Product_Group" value="@item.GroupId" /><span>@item.Name</span>
+
+                                @if (item.Groups.Any())
+                                {
+                                    <ul>
+                                        @foreach (var i in item.Groups)
+                                        {
+                                        <li>
+                                            <input type="checkbox"  name="Product_Group" value="@i.GroupId" /><span>@i.Name</span>
+                                        </li>
+                                        }
+                                    </ul>
+                                }
+
+                            </li>
+
+                        }
+                    </ul>
+
+
+                }
+
+
+
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" id="sub" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>

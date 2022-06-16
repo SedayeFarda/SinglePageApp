@@ -6,12 +6,19 @@ using System.Web;
 
 namespace SinglePageApp.Repository
 {
-    public class DescriptionRepository : IDescription
+    class DescriptionRepository : IDescription
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+
+        DbSinglePageContext db;
+        public DescriptionRepository(DbSinglePageContext _db)
+        {
+            db = _db;
+        }
+
+
         public void Delete(int id)
         {
-            var description=GetById(id);
+            var description = GetById(id);
             db.Entry(description).State = EntityState.Deleted;
             Save();
         }
@@ -23,17 +30,17 @@ namespace SinglePageApp.Repository
 
         public List<Description> GetAllList()
         {
-            return db.Description.ToList();
+            return db.Descriptions.ToList();
         }
 
         public Description GetById(int id)
         {
-            return db.Description.Find(id);
+            return db.Descriptions.Find(id);
         }
 
         public void insert(Description description)
         {
-            db.Description.Add(description);
+            db.Descriptions.Add(description);
             Save();
         }
 
@@ -44,7 +51,7 @@ namespace SinglePageApp.Repository
 
         public void Update(Description description)
         {
-            db.Entry(description).State = EntityState.Modified ;
+            db.Entry(description).State = EntityState.Modified;
             Save();
         }
     }

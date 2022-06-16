@@ -7,22 +7,22 @@ using System.Web;
 
 namespace SinglePageApp
 {
-    public class SliderRepository : ISlider
+    public class SliderRepository:ISlider
     {
         DbSinglePageContext db = new DbSinglePageContext();
         public void Dispose()
         {
-            Dispose();
+            db.Dispose();
         }
 
         public Slider GetById(int id)
         {
-           return db.Slider.Find(id);
+            return db.Sliders.Find(id);
         }
 
         public void insert(Slider slider)
         {
-            db.Slider.Add(slider);
+            db.Sliders.Add(slider);
             Save();
         }
 
@@ -33,7 +33,7 @@ namespace SinglePageApp
 
         public void Update(Slider slider)
         {
-            db.Entry(slider).State=EntityState.Modified;
+            db.Entry(slider).State = EntityState.Modified;
             Save();
         }
     }
