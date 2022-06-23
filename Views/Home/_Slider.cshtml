@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Product>
+
+
+
+
+
+
+<div class="content">
+
+    <div class="container">
+        <h2 class="my-5 text-center">Carousel #1</h2>
+        <div class="owl-carousel owl-1">
+            @foreach (var item in Model)
+            {
+                <div><a href="http://google.com"><img src="~/images/product/@item.ImgName" alt="Image" class="img-fluid" style="height:400px"></a></div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

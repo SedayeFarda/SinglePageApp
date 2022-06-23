@@ -32,15 +32,17 @@ namespace SinglePageApp
         [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
         public string Linq { get; set; }
         [Display(Name = "عکس")]
-      [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
+     
 
         public string ImgName { get; set; }
         [NotMapped]
         [Display(Name = "فایل")]
-        [Required(ErrorMessage = "لطفا{0} را وارد کنید")]
+      
         public HttpPostedFileBase UploadFile { get; set; }
 
         public virtual ICollection<ProductGroup> ProductGroup { get; set; }
-       
+        public virtual ICollection<PropertyProduct> PropertyProduct { get; set; }
+        public virtual ICollection<GalleryProduct> GalleryProduct { get; set; }
+
     }
 }

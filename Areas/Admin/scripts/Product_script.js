@@ -12,27 +12,18 @@ function ShowImagePreview(imageUploader, previewImage)
         reader.readAsDataURL(imageUploader.files[0]);
     }
 }
-function edite_post() {
-    
-    var data1 = $("#FormEditProduct");
-    console.log(data1.valid());
-    if ($(data1).valid()) {
-        
-        $.ajax({
-            url: "/admin/products/Edit/",
-            type: "Post",
-            data: data1.serialize(),
-          
-        }).done(function (res) {
+function del(id) {
 
-            $("#list_data").html(res);
-        });
-    }
-    else {
+    $.get("/admin/products/delete/" + id, function () {
 
-        return false;
-    }
-   
+        if (confirm("آیا از حذف مطمعنید؟")) {
+
+            $("#item" + id).hide("slow");
+        }
+
+
+    });
+
 
 }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SinglePageApp.Interface
+namespace SinglePageApp
 {
     interface IProduct:IDisposable
     {

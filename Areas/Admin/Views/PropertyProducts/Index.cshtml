@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SinglePageApp.PropertyProduct>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int id = ViewBag.ProductId;
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-success btn-sm" onclick="Create(@id)">ایجاد</a>
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="item@(item.id)">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a class="btn btn-warning btn-sm" onclick="edit(@item.id)">ویرایش</a>
+                <a class="btn btn-danger btn-sm" onclick="delet(@item.id)">حذف</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Script{
+
+
+
+    <script src="~/Areas/Admin/scripts/PropertyProduct_script.js"></script>
+
+
+}

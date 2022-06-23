@@ -20,18 +20,25 @@
     overflow: hidden;
     
    }
+.right-text > p{
 
-.box {
+    height:55px;
+    overflow:hidden;
+
+}
+#btn_description {
+    position: sticky;
+}
+/*.box {
     width: 40%;
     word-wrap: break-word;
     width: auto;
     text-align: right;
     padding:30px;
+}*/
+.box #div_description img {
+    /*display: none;*/
 }
-   
-    .box #div_description img {
-        display: none;
-    }
     .box #btn_description {
         display: inline-block;
         color: slateblue;

@@ -1,0 +1,78 @@
+﻿@model SinglePageApp.GalleryProduct
+
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @using (Html.BeginForm("CreateGallery", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ProductId)
+        <div class="col-md-4">
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <img src="" id="img" class="thumbnail" />
+                    <div class="col-md-10">
+                        <input type="file" name="imgUp" onchange="ShowImagePreview(this, document.getElementById('img'))" />
+                        @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="ثبت تصویر" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            @{
+                List<GalleryProduct> list = ViewBag.GalleryProduct;
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>تصویر</th>
+                        <th>عنوان</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/Images/GalleryProduct/@item.ImagePath" class="thumbnail" />
+                            </td>
+                            <td>
+                                @item.Title
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-danger" href="/Admin/Products/deleteGallery/@item.id">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    }
+</div>
+
+@section script{
+
+
+    <script src="~/Areas/Admin/scripts/GalleryProduct_script.js"></script>
+
+
+}

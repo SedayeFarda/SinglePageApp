@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Net;
+using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using SinglePageApp.Repository;
 
@@ -12,12 +14,14 @@ namespace SinglePageApp.Areas.Admin.Controllers
         ProductRepository ProductRepository;
         ProductGroupRepository ProductGroupRepository;
         GroupsRepository GroupsRepository;
+        GalleryProductRepository GalleryProductRepository;
         DbSinglePageContext db = new DbSinglePageContext();
         public ProductsController()
         {
             ProductRepository = new ProductRepository(db);
             ProductGroupRepository = new ProductGroupRepository(db);
             GroupsRepository = new GroupsRepository(db);
+            GalleryProductRepository = new GalleryProductRepository(db);
         }
 
         // GET: Admin/Products
@@ -147,21 +151,42 @@ namespace SinglePageApp.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
 
-
-
-        // GET: Admin/Products/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Gallery(int id)
         {
-            if (id == null)
+            GalleryProduct galleryProduct = new GalleryProduct()
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = ProductRepository.GetById(id.Value);
-            if (product == null)
+                ProductId=id
+            };
+            ViewBag.GalleryProduct = GalleryProductRepository.GetAllList();
+            return View(galleryProduct);
+        }
+        [HttpPost]
+        public ActionResult CreateGallery(GalleryProduct galleryProduct,HttpPostedFileBase imgUp)
+        {
+            if (imgUp != null)
             {
-                return HttpNotFound();
+                galleryProduct.ImagePath = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(imgUp.FileName);
+                WebImage img = new WebImage(imgUp.InputStream);
+                img.Resize(100, 100);
+                img.Save(Server.MapPath("/images/GalleryProduct/" + galleryProduct.ImagePath));
             }
-            return PartialView(product);
+            GalleryProductRepository.insert(galleryProduct);
+            return RedirectToAction("Gallery",new {id=galleryProduct.ProductId });
+        }
+        public ActionResult deleteGallery(int id)
+        {
+            var GalleryProduct = GalleryProductRepository.GetById(id);
+            GalleryProductRepository.delete(id);
+            return RedirectToAction("Gallery", new { id = GalleryProduct.ProductId });
+            
+        }
+        // GET: Admin/Products/Delete/5
+        public void Delete(int id)
+        {
+            
+             ProductRepository.delete(id);
+           
+            
         }
 
         // POST: Admin/Products/Delete/5

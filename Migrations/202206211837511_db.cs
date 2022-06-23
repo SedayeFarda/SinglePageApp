@@ -7,12 +7,12 @@
     {
         public override void Up()
         {
-            AlterColumn("dbo.Products", "ImgName", c => c.String(nullable: false));
+            AddColumn("dbo.GalleryProducts", "Title", c => c.String());
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Products", "ImgName", c => c.String());
+            DropColumn("dbo.GalleryProducts", "Title");
         }
     }
 }

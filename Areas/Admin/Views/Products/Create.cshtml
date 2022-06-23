@@ -55,13 +55,13 @@
         <div class="form-group">
             <img src="@Url.Content("/images/product/" + @Model.ImgName)" id="ImgNameAdd" width="200" height="200" />
             <div class="col-md-10">
-                <input type="file" name="UploadFile" onchange="ShowImagePreview(this,document.getElementById('ImgNameAdd'))" />
+                <input type="file" name="UploadFile" id="up_create" onchange="ShowImagePreview(this,document.getElementById('ImgNameAdd'))" />
                 @Html.ValidationMessageFor(model => model.ImgName, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-10" id="group_create_product">
                 @{
 
 

@@ -1,12 +1,9 @@
-﻿using SinglePageApp.Interface;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 
-namespace SinglePageApp.Repository
+namespace SinglePageApp
 {
     public class ProductRepository : IProduct
     {
@@ -51,26 +48,16 @@ namespace SinglePageApp.Repository
 
         public List<Product> ListProduct()
         {
-            return db.Products.ToList();
+            return db.Products.Include(x=>x.GalleryProduct).Include(x=>x.PropertyProduct).ToList();
         }
 
         public void save()
         {
-            try
-            {
+            
 
                 db.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-                    }
-                }
-            }
+           
+          
 
         }
 
@@ -86,13 +73,6 @@ namespace SinglePageApp.Repository
            
             save();
             return true;
-
-
-       
-            
-
-
-
 
         }
     }

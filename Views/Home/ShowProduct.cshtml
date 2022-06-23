@@ -1,0 +1,87 @@
+﻿@model SinglePageApp.Product
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+<section class="single-page">
+    <header><h3> @Model.Title  </h3> </header>
+    <article>
+        <!-- Detail -->
+        <div class="col-md-8 col-sm-12 col-xs-12 pull-left detail-product">
+            <div>
+                <span> قیمت : @Model.Price.ToString("#,0") تومان </span>
+                <a href="@Model.Linq" class="add-to-card-link border-radius">رفتن به سایت اصلی برای خرید</a>
+            </div>
+           
+                @Html.Raw(Model.Discryption)
+            
+        </div>
+        <!-- End Detail -->
+        <!-- Gallery -->
+        <div class="col-md-4 col-sm-12 col-xs-12 pull-right product-gallery">
+            <div class="large-image border-radius">
+                <img class="border-radius" id="showproduct_img" src="~/Images/product/@Model.ImgName">
+            </div>
+            @if (Model.GalleryProduct.Any())
+            {
+                <div class="thumbnails-image">
+                    <div class="row">
+                        @foreach (var item in Model.GalleryProduct)
+                        {
+                            <div class="col-md-3 col-sm-3 col-xs-4 border-radius"><img class="border-radius" alt="@item.Title" src="~/Images/GalleryProduct/@item.ImagePath"></div>
+
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- End Gallery -->
+        <div class="clearfix"></div>
+    </article>
+</section>
+
+<div class="tabs-product margin-top-25">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#main-content"> توضیحات کامل </a></li>
+        <li><a data-toggle="tab" href="#properties"> ویژگی ها </a></li>
+        <li><a data-toggle="tab" href="#comments"> نظرات کاربران </a></li>
+    </ul>
+    <div class="tab-content ">
+        <!-- description -->
+        <div id="main-content" class="tab-pane fade in active">
+            @Html.Raw(Model.Discryption)
+        </div>
+        <!-- End description -->
+        <!-- Chart -->
+        <div id="properties" class="tab-pane fade">
+            <h3> ویژگی های محصول : </h3>
+
+            @if (Model.PropertyProduct.Any())
+            {
+               
+
+                <ul>
+                    @foreach (var item in Model.PropertyProduct)
+                    {
+                        <li> @item.Name </li>
+                    }
+                </ul>
+            }
+
+        </div>
+        <!-- End Chart -->
+        <!-- Comment -->
+      
+        <!-- End Comment -->
+
+    </div>
+</div>
+<section class="border-radius tags-layer">
+    @foreach (var item in Model.Tags.Split('،'))
+    {
+        <a href="#">@item</a>
+    }
+
+</section>

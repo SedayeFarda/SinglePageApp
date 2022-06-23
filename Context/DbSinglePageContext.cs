@@ -15,5 +15,8 @@ namespace SinglePageApp
         public DbSet<Product> Products { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<ProductGroup> ProductsGroups { get; set; }
+
+        public DbSet<PropertyProduct> PropertyProducts { get; set; }
+        public DbSet<GalleryProduct> GalleryProducts { get; set; }
     }
     }
