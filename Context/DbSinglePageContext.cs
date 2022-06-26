@@ -18,5 +18,6 @@ namespace SinglePageApp
 
         public DbSet<PropertyProduct> PropertyProducts { get; set; }
         public DbSet<GalleryProduct> GalleryProducts { get; set; }
+        public DbSet<User> Users { get; set; }
     }
     }

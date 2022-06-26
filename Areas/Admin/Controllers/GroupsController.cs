@@ -11,6 +11,7 @@ using SinglePageApp.Repository;
 
 namespace SinglePageApp.Areas.Admin.Controllers
 {
+    [Authorize]
     public class GroupsController : Controller
     {
         private DbSinglePageContext db = new DbSinglePageContext();

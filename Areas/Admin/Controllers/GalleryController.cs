@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace SinglePageApp.Areas.Admin.Controllers
 {
+    [Authorize]
     public class GalleryController : Controller
     {
         DbSinglePageContext db = new DbSinglePageContext();

@@ -9,6 +9,7 @@ using SinglePageApp.Repository;
 
 namespace SinglePageApp.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         ProductRepository ProductRepository;
@@ -23,7 +24,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
             GroupsRepository = new GroupsRepository(db);
             GalleryProductRepository = new GalleryProductRepository(db);
         }
-
+        [HttpGet]
         // GET: Admin/Products
         public ActionResult Index()
         {

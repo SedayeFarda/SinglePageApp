@@ -1,9 +1,9 @@
 ﻿using SinglePageApp.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SinglePageApp.Areas.Admin.Controllers
 {
@@ -15,10 +15,35 @@ namespace SinglePageApp.Areas.Admin.Controllers
         {
             repository = new DescriptionRepository(db);
         }
+
+        public  ActionResult logout()
+        {
+            FormsAuthentication.SignOut();
+          return  Redirect("/");
+        }
+
+    
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+            var username_and_pass = db.Users.Any(x => x.UserName == user.UserName && x.Password == user.Password);
+            if (username_and_pass == true)
+            {
+                FormsAuthentication.SetAuthCookie(user.UserName, true);
+                return RedirectToAction("index","Products");
+            }
+            else
+            {
+                ModelState.AddModelError("UserName", "نام کاربری یا کلمه عبور اشتباه است");
+                return View(user);
+            }
+            
+        }
         // GET: Admin/Home
+        [HttpGet]
         public ActionResult Index()
         {
-            return View(repository.GetAllList());
+            return View("Login");
         }
         [HttpGet]
         public ActionResult Create()

@@ -11,6 +11,7 @@ using SinglePageApp.Repository;
 
 namespace SinglePageApp.Areas.Admin.Controllers
 {
+    [Authorize]
     public class PropertyProductsController : Controller
     {
         private DbSinglePageContext db = new DbSinglePageContext();

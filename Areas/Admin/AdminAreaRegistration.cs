@@ -8,17 +8,20 @@ namespace SinglePageApp.Areas.Admin
         {
             get 
             {
-                return "Admin";
+                return "admin";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+            defaults: new { controller = "Home", action = "index", id = UrlParameter.Optional }
             );
+
+            
         }
     }
 }
