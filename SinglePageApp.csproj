@@ -205,8 +205,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\css\bootstrap-rtl.css" />
+    <Content Include="Areas\Admin\Content\css\bootstrap-tagsinput.css" />
     <Content Include="Areas\Admin\Content\css\MyCssAdminPanel.css" />
     <Content Include="Areas\Admin\Content\css\sb-admin.css" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-tagsinput.min.js" />
     <Content Include="Areas\Admin\Content\js\bootstrap.js" />
     <Content Include="Areas\Admin\Content\js\bootstrap.min.js" />
     <Content Include="Areas\Admin\Content\js\jquery-1.10.2.js" />

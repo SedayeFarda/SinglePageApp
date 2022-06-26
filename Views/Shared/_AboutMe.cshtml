@@ -15,15 +15,16 @@
     {
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-12">
                 <div class="left-image">
                     <img src="~/images/product/@item.ImgName" alt="Nature Girl" />
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-8 col-xs-12">
                 <div class="right-text">
                     <h4>@item.Title</h4>
+                    <p class="price">Price:<span class="span-price" >@item.Price</span> </p>
                     @Html.Raw(item.Discryption)
                     <div class="white-button">
                         <a href="/home/ShowProduct/@item.ProductId">Read More</a>

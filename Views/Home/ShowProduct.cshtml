@@ -10,7 +10,7 @@
         <!-- Detail -->
         <div class="col-md-8 col-sm-12 col-xs-12 pull-left detail-product">
             <div>
-                <span> قیمت : @Model.Price.ToString("#,0") تومان </span>
+                <span> Price : @Model.Price  </span>
                 <a href="@Model.Linq" class="add-to-card-link border-radius">رفتن به سایت اصلی برای خرید</a>
             </div>
            
@@ -79,7 +79,7 @@
     </div>
 </div>
 <section class="border-radius tags-layer">
-    @foreach (var item in Model.Tags.Split('،'))
+    @foreach (var item in Model.Tags.Split(','))
     {
         <a href="#">@item</a>
     }

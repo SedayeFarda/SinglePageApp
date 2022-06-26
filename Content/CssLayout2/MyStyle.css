@@ -1,10 +1,10 @@
 ﻿.detail-product > p {
-    inline-size: 690px;
+    padding-left:1em;
     overflow-wrap: break-word;
 }
 
 #main-content > p {
-    inline-size: 1096px;
+    padding-left: 1em;
     overflow-wrap: break-word;
 }
 #showproduct_img{

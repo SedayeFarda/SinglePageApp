@@ -1,9 +1,9 @@
 ﻿@model SinglePageApp.Product
 
-@{ 
-     Layout = null;
+@{
+    Layout = null;
 }
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new {dir="rtl", id = "FormCreateProduct", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { dir = "rtl", id = "FormCreateProduct", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(x => x.ImgName)
@@ -39,7 +39,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" value="" name="tags" class="form-control" data-role="tagsinput" />
                 @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,23 +65,23 @@
                 @{
 
 
-                    
+
                     IEnumerable<Group> Groups = ViewBag.Groups;
                     <ul>
                         @foreach (var item in Groups.Where(x => x.Parent_id == null))
                         {
 
                             <li>
-                                <input type="checkbox"  name="Product_Group" value="@item.GroupId" /><span>@item.Name</span>
+                                <input type="checkbox" name="Product_Group" value="@item.GroupId" /><span>@item.Name</span>
 
                                 @if (item.Groups.Any())
                                 {
                                     <ul>
                                         @foreach (var i in item.Groups)
                                         {
-                                        <li>
-                                            <input type="checkbox"  name="Product_Group" value="@i.GroupId" /><span>@i.Name</span>
-                                        </li>
+                                            <li>
+                                                <input type="checkbox" name="Product_Group" value="@i.GroupId" /><span>@i.Name</span>
+                                            </li>
                                         }
                                     </ul>
                                 }
@@ -116,3 +116,13 @@
 <script>
     $("#Discryption").ckeditor();
 </script>
+
+
+
+
+
+
+
+
+
+
