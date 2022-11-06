@@ -1,0 +1,15 @@
+﻿.detail-product > p {
+    padding-left:1em;
+    overflow-wrap: break-word;
+}
+
+#main-content > p {
+    padding-left: 1em;
+    overflow-wrap: break-word;
+}
+#showproduct_img{
+
+    margin-top:43px;
+    width:366px;
+    height:366px;
+}

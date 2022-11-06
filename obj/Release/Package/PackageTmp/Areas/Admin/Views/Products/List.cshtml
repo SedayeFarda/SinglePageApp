@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SinglePageApp.Product>
+
+@{ 
+     Layout = null;
+}
+<table class="table table-bordered table-striped" dir="rtl">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Linq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </th>
+        <th>گالری تصاویر</th>
+        <th>ویزگی ها</th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr id="item@(item.ProductId)">
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Linq)
+    </td>
+    <td>
+        <img src="~/images/product/@item.ImgName" id="img_list_product" style="width:265px;height:265px"/>
+    </td>
+    <td>
+        @if (item.GalleryProduct.Any())
+        {
+            <p>دارد</p>
+
+
+        }
+        else
+        {
+            <p>ندارد</p>
+        }
+
+    </td>
+    <td>
+        @if (item.PropertyProduct.Any())
+        {
+
+            <p>دارد</p>
+        }
+        else
+        {
+            <p>ندارد</p>
+
+        }
+    </td>
+    <td>
+        <a class="btn btn-warning btn-sm" onclick="edite(@item.ProductId)">ویرایش</a>
+        <a class="btn btn-danger btn-sm" onclick="del(@item.ProductId)">حذف</a>
+        <a class="btn btn-info btn-sm" href="/admin/PropertyProducts/index/@item.ProductId">ویژگی ها</a>
+        <a class="btn btn-info btn-sm" href="/admin/Products/Gallery/@item.ProductId"> گالری تصاویر</a>
+
+    </td>
+</tr>
+    }
+
+</table>

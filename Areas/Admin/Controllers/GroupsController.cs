@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SinglePageApp;
+using SinglePageApp.Context;
 using SinglePageApp.Repository;
 
 namespace SinglePageApp.Areas.Admin.Controllers
@@ -14,7 +15,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
     [Authorize]
     public class GroupsController : Controller
     {
-        private DbSinglePageContext db = new DbSinglePageContext();
+         DbSinglePageContext db = new DbSinglePageContext();
         GroupsRepository groupsRepository;
         public GroupsController()
         {

@@ -11,12 +11,14 @@ namespace SinglePageApp
     {
         [Key]
         public int id { get; set; }
-        [ForeignKey("Product")]
+       
         public int ProductId { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
         public string ImagePath { get; set; }
 
         public string Title { get; set; }
 
-        public virtual Product Product { get; set; }
+        
     }
 }

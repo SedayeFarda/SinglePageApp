@@ -1,4 +1,5 @@
-﻿using SinglePageApp.Interface;
+﻿using SinglePageApp.Context;
+using SinglePageApp.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,43 +10,47 @@ namespace SinglePageApp
 {
     public class LogoRepository : ILogo
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext _db;
+        public LogoRepository(DbSinglePageContext db)
+        {
+            _db = db;
+        }
 
         public int CountLogo()
         {
-            return db.logos.Count();
+            return _db.logos.Count();
         }
 
         public void Dispose()
         {
-            db.Dispose();
+            _db.Dispose();
         }
 
         public logo GetById(int id)
         {
-            return db.logos.Find(id);
+            return _db.logos.Find(id);
         }
 
         public void insert(logo logo)
         {
-            db.logos.Add(logo);
+            _db.logos.Add(logo);
             Save();
         }
 
         public List<logo> GetAllLogo()
         {
-            return db.logos.ToList();
+            return _db.logos.ToList();
 
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            _db.SaveChanges();
         }
 
         public void Update(logo logo)
         {
-            db.Entry(logo).State = EntityState.Modified;
+            _db.Entry(logo).State = EntityState.Modified;
             Save();
         }
     }

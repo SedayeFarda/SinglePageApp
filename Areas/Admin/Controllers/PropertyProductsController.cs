@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SinglePageApp;
+using SinglePageApp.Context;
 using SinglePageApp.Repository;
 
 namespace SinglePageApp.Areas.Admin.Controllers
@@ -14,13 +15,14 @@ namespace SinglePageApp.Areas.Admin.Controllers
     [Authorize]
     public class PropertyProductsController : Controller
     {
-        private DbSinglePageContext db = new DbSinglePageContext();
+         DbSinglePageContext _db;
         PropertyProductRepository PropertyProductRepository;
         ProductRepository productRepository;
         public PropertyProductsController()
         {
-            PropertyProductRepository = new PropertyProductRepository(db);
-            productRepository = new ProductRepository(db);
+            _db = new DbSinglePageContext();
+            PropertyProductRepository = new PropertyProductRepository(_db);
+            productRepository = new ProductRepository(_db);
         }
 
         // GET: Admin/PropertyProducts
@@ -38,7 +40,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PropertyProduct propertyProduct = db.PropertyProducts.Find(id);
+            PropertyProduct propertyProduct = _db.PropertyProducts.Find(id);
             if (propertyProduct == null)
             {
                 return HttpNotFound();
@@ -66,8 +68,8 @@ namespace SinglePageApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PropertyProducts.Add(propertyProduct);
-                db.SaveChanges();
+                _db.PropertyProducts.Add(propertyProduct);
+                _db.SaveChanges();
                 return RedirectToAction("Index",new {id=propertyProduct.ProductId });
             }
 
@@ -118,9 +120,9 @@ namespace SinglePageApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PropertyProduct propertyProduct = db.PropertyProducts.Find(id);
-            db.PropertyProducts.Remove(propertyProduct);
-            db.SaveChanges();
+            PropertyProduct propertyProduct = _db.PropertyProducts.Find(id);
+            _db.PropertyProducts.Remove(propertyProduct);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -128,7 +130,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SinglePageApp.Group>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-info btn-sm" onclick="Create()">ایجاد</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parent_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(x => x.Parent_id == null))
+    {
+        <tr id="item_tr@(item.GroupId)">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.Groups.Any())
+                {
+                    <ul>
+                        @foreach (var i in item.Groups)
+                        {
+
+                            <li id="item@(i.GroupId)">
+                                @i.Name
+                                <a class="btn btn-warning btn-xs" onclick="edite(@i.GroupId)">ویرایش</a>
+                                <a class="btn btn-danger btn-xs" onclick="delet(@i.GroupId)">حذف</a>
+                            </li>
+
+
+
+
+                        }
+                    </ul>
+                }
+            </td>
+            <td>
+                <a class="btn btn-primary btn-Sm" onclick="Create(@item.GroupId)">اضافه کردن</a>
+                <a class="btn btn-danger btn-Sm" onclick="delet2(@item.GroupId)">حذف</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section script{
+
+
+    <script src="~/Areas/Admin/scripts/Group_Script.js"></script>
+
+
+
+
+}

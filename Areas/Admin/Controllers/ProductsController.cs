@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using SinglePageApp.Context;
 using SinglePageApp.Repository;
 
 namespace SinglePageApp.Areas.Admin.Controllers

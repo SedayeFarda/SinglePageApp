@@ -361,12 +361,9 @@ E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\System.Web.W
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\System.Web.WebPages.Razor.xml
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Newtonsoft.Json.xml
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Antlr3.Runtime.pdb
-E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.Migrations.db.resources
-E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csproj.GenerateResource.cache
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csproj.CopyComplete
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.dll
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.pdb
-E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csprojAssemblyReference.cache
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.AspNet.Identity.Core.dll
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -384,3 +381,6 @@ E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.Ow
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.Owin.Security.xml
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.Owin.Security.Cookies.xml
 E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\bin\Microsoft.Owin.Security.OAuth.xml
+E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csprojAssemblyReference.cache
+E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.Migrations.db.resources
+E:\project Mvc\MyProject\New folder\SinglePageApp\SinglePageApp\obj\Debug\SinglePageApp.csproj.GenerateResource.cache

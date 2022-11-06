@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Product>
+    <div class="top-header">
+       
+    </div>
+<div class="section-heading">
+
+    <h2>Introducing Blugoon</h2>
+    <div class="line-dec"></div>
+    <span>Blugoon is free HTML template for everyone. This is a Bootstrap v4.3.1 layout which you can fully customize for your websites. Please tell your friends about Tooplate. Thank you.</span>
+</div>
+
+   
+<div class="left-image-post">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+
+            <div class="col-md-4 col-xs-12">
+                <div class="left-image">
+                    <img src="~/images/product/@item.ImgName" alt="Nature Girl" />
+                </div>
+            </div>
+
+            <div class="col-md-8 col-xs-12">
+                <div class="right-text">
+                    <h4>@item.Title</h4>
+                    <p class="price">Price:<span class="span-price" >@item.Price</span> </p>
+                    @Html.Raw(item.Discryption)
+                    <div class="white-button">
+                        <a href="/home/ShowProduct/@item.ProductId">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+    }
+
+</div>
+
+
+@section scripts{
+
+
+    
+}
+
+

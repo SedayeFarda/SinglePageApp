@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SinglePageApp.Context;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -26,17 +27,17 @@ namespace SinglePageApp
             db.Dispose();
         }
 
-        public List<GroupGallery> GetAllList()
+        public List<GroupGalleries> GetAllList()
         {
             return db.GroupGallerys.ToList();
         }
 
-        public GroupGallery GetById(int id)
+        public GroupGalleries GetById(int id)
         {
             return db.GroupGallerys.Find(id);
         }
 
-        public void insert(GroupGallery GroupGallery)
+        public void insert(GroupGalleries GroupGallery)
         {
             db.GroupGallerys.Add(GroupGallery);
             save();
@@ -49,7 +50,7 @@ namespace SinglePageApp
             db.SaveChanges();
         }
 
-        public void update(GroupGallery GroupGallery)
+        public void update(GroupGalleries GroupGallery)
         {
             db.Entry(GroupGallery).State = EntityState.Modified;
             save();

@@ -13,10 +13,12 @@ namespace SinglePageApp
         [Required(ErrorMessage ="لطفا{0} را  وارد کنید")]
         [MaxLength(length: 50)]
         public string ImagePath { get; set; }
+        public int GroupGallery_id { get; set; }
         [Display(Name = "گروه")]
         [Required(ErrorMessage = "لطفا{0} را  وارد کنید")]
-        [ForeignKey("GroupGallery")]
-        public int GroupGallery_id { get; set; }
+        [ForeignKey("GroupGallery_id")]
+        public virtual GroupGalleries GroupGallery { get; set; }
+        
         [Display(Name ="برچسب ها")]
 
         [Required(ErrorMessage ="لطفا {0}را وارد کنید")]
@@ -28,7 +30,7 @@ namespace SinglePageApp
         [Required(ErrorMessage = "لطفا{0} را  وارد کنید")]
         public HttpPostedFileBase UploadFile { get; set; }
 
-        public virtual GroupGallery GroupGallery { get; set; }
+       
 
      
     }

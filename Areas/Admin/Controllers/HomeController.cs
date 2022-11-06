@@ -1,4 +1,5 @@
-﻿using SinglePageApp.Repository;
+﻿using SinglePageApp.Context;
+using SinglePageApp.Repository;
 using System;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         DescriptionRepository repository;
         public HomeController()
         {
-            repository = new DescriptionRepository(db);
+            repository = new DescriptionRepository(new DbSinglePageContext());
         }
 
         public  ActionResult logout()

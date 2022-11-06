@@ -15,8 +15,11 @@ namespace SinglePageApp.Areas.Admin.Controllers
 {
     public class logoController : Controller
     {
-        LogoRepository logoRepository = new LogoRepository();
-
+        LogoRepository _logoRepository;
+        public logoController(LogoRepository logoRepository)
+        {
+            _logoRepository = logoRepository;
+        }
         // GET: Admin/logo
         public ActionResult Index()
         {
@@ -25,7 +28,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         }
         public ActionResult _List()
         {
-            return PartialView(logoRepository.GetAllLogo());
+            return PartialView(_logoRepository.GetAllLogo());
 
         }
         // GET: Admin/logo/Details/5
@@ -39,7 +42,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
 
         public logo logo_1()
         {
-            List<logo> logos = logoRepository.GetAllLogo();
+            List<logo> logos = _logoRepository.GetAllLogo();
             return logos.SingleOrDefault();
         }
 
@@ -50,10 +53,10 @@ namespace SinglePageApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult _Create([Bind(Include = "id,FullName,ImagePath")] logo logo, HttpPostedFileBase File)
         {
-            if (logoRepository.CountLogo() == 1)
+            if (_logoRepository.CountLogo() == 1)
             {
                 ViewBag.num = 1;
-                return PartialView("_List", logoRepository.GetAllLogo());
+                return PartialView("_List", _logoRepository.GetAllLogo());
 
             }
             if (File != null)
@@ -70,12 +73,12 @@ namespace SinglePageApp.Areas.Admin.Controllers
             else
             {
                 ModelState.AddModelError("", "لطفا عکس را آپلود کنید");
-                return PartialView("_List", logoRepository.GetAllLogo());
+                return PartialView("_List", _logoRepository.GetAllLogo());
             }
-            logoRepository.insert(logo);
+            _logoRepository.insert(logo);
 
 
-            return PartialView("_List", logoRepository.GetAllLogo());
+            return PartialView("_List", _logoRepository.GetAllLogo());
 
         }
         [HttpGet]
@@ -83,7 +86,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
 
-            logo logo = logoRepository.GetById(id);
+            logo logo = _logoRepository.GetById(id);
             if (logo == null)
             {
                 return HttpNotFound();
@@ -105,13 +108,13 @@ namespace SinglePageApp.Areas.Admin.Controllers
                     System.IO.File.Delete(Server.MapPath("/images/logo/" + logo.ImagePath));
                     File.SaveAs(Server.MapPath("/images/logo/" + logo.ImagePath));
                 }
-                logoRepository.Update(logo);
+                _logoRepository.Update(logo);
             }
             else
             {
                 return View(logo);
             }
-            return View("List", logoRepository.GetAllLogo());
+            return View("List", _logoRepository.GetAllLogo());
         }
 
         // GET: Admin/logo/Delete/5
@@ -122,7 +125,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         {
             if (disposing)
             {
-                logoRepository.Dispose();
+                _logoRepository.Dispose();
 
             }
             base.Dispose(disposing);

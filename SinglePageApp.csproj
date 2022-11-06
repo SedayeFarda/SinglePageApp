@@ -160,7 +160,7 @@
     <Compile Include="Areas\Admin\Data\Description.cs" />
     <Compile Include="Areas\Admin\Data\Gallery.cs" />
     <Compile Include="Areas\Admin\Data\GalleryProduct.cs" />
-    <Compile Include="Areas\Admin\Data\GroupGallery.cs" />
+    <Compile Include="Areas\Admin\Data\GroupGalleries.cs" />
     <Compile Include="Areas\Admin\Data\Group.cs" />
     <Compile Include="Areas\Admin\Data\logo.cs" />
     <Compile Include="Areas\Admin\Data\Product.cs" />
@@ -184,9 +184,9 @@
     <Compile Include="Interface\IProductGroup.cs" />
     <Compile Include="Interface\IPropertyProduct.cs" />
     <Compile Include="Interface\ISlider.cs" />
-    <Compile Include="Migrations\202206231624214_db.cs" />
-    <Compile Include="Migrations\202206231624214_db.designer.cs">
-      <DependentUpon>202206231624214_db.cs</DependentUpon>
+    <Compile Include="Migrations\202211061626336_db.cs" />
+    <Compile Include="Migrations\202211061626336_db.designer.cs">
+      <DependentUpon>202211061626336_db.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1514,10 +1514,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202206231624214_db.resx">
-      <DependentUpon>202206231624214_db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202211061626336_db.resx">
+      <DependentUpon>202211061626336_db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

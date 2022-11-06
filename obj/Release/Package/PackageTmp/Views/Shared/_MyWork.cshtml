@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Group>
+<div class="section-heading">
+    <h2>Gallery</h2>
+    <div class="line-dec"></div>
+    <span>Donec sit amet enim tempor nisl fermentum aliquam. In consectetur sapien eu nisi venenatis lobortis. Sed ullamcorper tristique elit nec facilisis.</span>
+</div>
+<div class="row">
+    <div class="isotope-wrapper">
+
+        @{
+            var num = 0;
+            <ul class="nav nav-tabs">
+                @foreach (var item in Model)
+                {
+
+                    if (num == 0)
+                    {
+
+
+                        <li class=""><a data-toggle="tab" onclick="$('#item'@item.GroupId).addClass('active')" href="#item@(item.GroupId)">@item.Name</a></li>
+
+                        num++;
+                        continue;
+                    }
+
+                    <li><a data-toggle="tab" onclick="$('#item'@item.GroupId).addClass('active')" href="#item@(item.GroupId)">@item.Name</a></li>
+                }
+            </ul>
+
+
+        }
+
+
+
+
+
+
+
+
+        @{
+            var num1 = 0;
+            <div class="tab-content">
+                @foreach (var item in Model)
+                {
+                    if (num1 == 0)
+                    {
+                        <div id="item@(item.GroupId)" class="tab-pane fade in active">@Html.Action("_GetProduct", "Home", item)</div>
+                        num1++;
+                        continue;
+
+                    }
+                    <div id="item@(item.GroupId)" class="tab-pane fade in">@Html.Action("_GetProduct", "Home", item)</div>
+
+
+                }
+            </div>
+
+        }
+
+    </div>
+
+</div>
+

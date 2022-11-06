@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Gallery>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupGallery_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="item@(item.id)">
+        <td>
+            <img src="/images/@item.ImagePath" class="image_style"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupGallery_id)
+        </td>
+        <td>
+            <a class="btn btn-warning" onclick="edit(@item.id)">ویرایش</a>
+            <a class="btn btn-danger" onclick="delet(@item.id)">حذف</a>
+            
+        </td>
+    </tr>
+}
+
+</table>

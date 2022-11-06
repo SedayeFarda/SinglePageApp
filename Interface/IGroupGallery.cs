@@ -8,12 +8,12 @@ namespace SinglePageApp
 {
     interface IGroupGallery:IDisposable
     {
-        List<GroupGallery> GetAllList();
+        List<GroupGalleries> GetAllList();
 
         void save();
-        void insert(GroupGallery gallery);
-        GroupGallery GetById(int id);
-        void update(GroupGallery gallery);
+        void insert(GroupGalleries gallery);
+        GroupGalleries GetById(int id);
+        void update(GroupGalleries gallery);
 
         void delete(int id);
     }

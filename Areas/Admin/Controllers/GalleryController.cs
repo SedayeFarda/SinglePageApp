@@ -1,4 +1,5 @@
-﻿using SinglePageApp.Repository;
+﻿using SinglePageApp.Context;
+using SinglePageApp.Repository;
 using System;
 using System.Web.Mvc;
 

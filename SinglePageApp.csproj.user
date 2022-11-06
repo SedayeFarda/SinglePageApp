@@ -25,6 +25,7 @@
     <ActiveDebugTarget />
     <WebStackScaffolding_DbContextTypeFullName>SinglePageApp.DbSinglePageContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

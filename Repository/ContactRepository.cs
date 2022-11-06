@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SinglePageApp.Context;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,43 +9,47 @@ namespace SinglePageApp
 {
     public class ContactRepository:IContact
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext _db;
+        public ContactRepository(DbSinglePageContext db)
+        {
+            _db = db; 
+        }
         public void Delete(int id)
         {
-            var item = db.Contacts.Find(id);
-            db.Contacts.Remove(item);
+            var item = _db.Contacts.Find(id);
+            _db.Contacts.Remove(item);
             Save();
         }
 
         public void Dispose()
         {
-            db.Dispose();
+            _db.Dispose();
         }
 
         public List<Contact> GetAllList()
         {
-            return db.Contacts.ToList();
+            return _db.Contacts.ToList();
         }
 
         public Contact GetById(int id)
         {
-            return db.Contacts.Find(id);
+            return _db.Contacts.Find(id);
         }
 
         public void insert(Contact contact)
         {
-            db.Contacts.Add(contact);
+            _db.Contacts.Add(contact);
             Save();
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            _db.SaveChanges();
         }
 
         public void Update(Contact contact)
         {
-            db.Entry(contact).State = EntityState.Modified;
+            _db.Entry(contact).State = EntityState.Modified;
             Save();
         }
     }

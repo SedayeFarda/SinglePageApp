@@ -1,4 +1,5 @@
-﻿using SinglePageApp.Repository;
+﻿using SinglePageApp.Context;
+using SinglePageApp.Repository;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -6,17 +7,18 @@ namespace SinglePageApp.Controllers
 {
     public class HomeController : Controller
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext _db;
         DescriptionRepository descriptionRepository;
         GroupGalleryRepository GroupGalleryRepository;
         ProductRepository ProductRepository;
         GroupsRepository GroupsRepository;
         public HomeController()
         {
-            descriptionRepository = new DescriptionRepository(db);
-            GroupGalleryRepository = new GroupGalleryRepository(db);
-            ProductRepository = new ProductRepository(db);
-            GroupsRepository = new GroupsRepository(db);
+            _db = new DbSinglePageContext();
+            descriptionRepository = new DescriptionRepository(_db);
+            GroupGalleryRepository = new GroupGalleryRepository(_db);
+            ProductRepository = new ProductRepository(_db);
+            GroupsRepository = new GroupsRepository(_db);
         }
         public ActionResult _Slider()
         {

@@ -1,4 +1,5 @@
-﻿using SinglePageApp.Interface;
+﻿using SinglePageApp.Context;
+using SinglePageApp.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,31 +10,35 @@ namespace SinglePageApp
 {
     public class SliderRepository:ISlider
     {
-        DbSinglePageContext db = new DbSinglePageContext();
+        DbSinglePageContext _db;
+        public SliderRepository(DbSinglePageContext db)
+        {
+            _db = db;
+        }
         public void Dispose()
         {
-            db.Dispose();
+            _db.Dispose();
         }
 
         public Slider GetById(int id)
         {
-            return db.Sliders.Find(id);
+            return _db.Sliders.Find(id);
         }
 
         public void insert(Slider slider)
         {
-            db.Sliders.Add(slider);
+            _db.Sliders.Add(slider);
             Save();
         }
 
         public void Save()
         {
-            db.SaveChanges();
+            _db.SaveChanges();
         }
 
         public void Update(Slider slider)
         {
-            db.Entry(slider).State = EntityState.Modified;
+            _db.Entry(slider).State = EntityState.Modified;
             Save();
         }
     }

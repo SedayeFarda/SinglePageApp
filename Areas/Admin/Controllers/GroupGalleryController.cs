@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SinglePageApp.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,7 +34,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(GroupGallery groupGallery)
+        public ActionResult Create(GroupGalleries groupGallery)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +51,7 @@ namespace SinglePageApp.Areas.Admin.Controllers
             return PartialView("_Edit", GroupGallery);
         }
         [HttpPost]
-        public ActionResult Edit(GroupGallery groupGallery)
+        public ActionResult Edit(GroupGalleries groupGallery)
         {
             if (ModelState.IsValid)
             {
